@@ -178,9 +178,9 @@ class Blogs extends Admin_Controller {
 
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 1000;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
+                $config['max_size']             = 2000;
+                $config['max_width']            = 1200;
+                $config['max_height']           = 600;
 
                 $this->load->library('upload', $config);
 
@@ -278,9 +278,9 @@ class Blogs extends Admin_Controller {
 
                 $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_size']             = 1000;
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
+                $config['max_size']             = 2000;
+                $config['max_width']            = 1200;
+                $config['max_height']           = 600;
 
                 $this->load->library('upload', $config);
 

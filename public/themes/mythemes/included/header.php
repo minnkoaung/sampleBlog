@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/css/freelancer.css">
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/css/animate.css">
     <!-- Custom CSS -->
    <!--  <link href="../css/portfolio-item.css" rel="stylesheet"> -->
 

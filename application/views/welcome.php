@@ -9,11 +9,11 @@
                 <?php foreach($personals['results'] as $personal): ?>
                 <div class="col-lg-12" style="margin-top: -70px;">
                     <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
-                    <img class="img-responsive" src="uploads/<?php echo $personal['image']; ?>" alt="">
+                    <img class="img-responsive animated flip" src="uploads/<?php echo $personal['image']; ?>" alt="">
 
                     <div class="intro-text">
                         <!-- <span class="name">Minn Ko Aung</span> -->
-                        <span class="name">I'm <?php echo $personal['name']; ?></span>
+                        <span class="name animated bounceInDown">I'm <?php echo $personal['name']; ?></span>
                         <hr class="star-light">
                         <span class="skills"><?php echo $personal['title']; ?></span>
                     </div>

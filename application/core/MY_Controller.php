@@ -82,11 +82,14 @@ class MY_Controller extends CI_Controller {
                     "//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css",
                     "/themes/core/css/core.css",
                     "themes/mythemes/css/freelancer.css",
+                    "themes/mythemes/css/animate.css",
                 ))
             ->add_external_js(
                 array(
                     base_url('themes/bootstrap/js/jquery-1.11.2.min.js'),
-                    base_url('themes/bootstrap/js/bootstrap.min.js')
+                    base_url('themes/bootstrap/js/bootstrap.min.js'),
+                    base_url('themes/mythemes/js/freelancer.min.js')
+                    
                 ));
 
         $this->includes[ 'js_files_i18n' ] = array(
