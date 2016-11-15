@@ -1,5 +1,4 @@
- <!-- Footer -->
-
+ 
 <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
@@ -32,7 +31,7 @@
                     </div>
                     <div class="footer-col col-md-4">
                         <h3>Feel free at my blog</h3>
-                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eius reiciendis blanditiis officia, deleniti laboriosam iure expedita. <br> <a class="btn btn-success btn-sm" href="http://startbootstrap.com">To My Blog</a></p>
+                        <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem eius reiciendis blanditiis officia, deleniti laboriosam iure expedita. <br> <a class="btn btn-success btn-sm" href="<?php echo base_url('/blog'); ?>">To My Blog</a></p>
                     </div>
                 </div>
             </div>
@@ -41,12 +40,12 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                       <p class="text-muted">
+                       <small class="text-muted">
                 <?php echo lang('core text page_rendered'); ?>
                 | Powered by CodeIgniter v<?php echo CI_VERSION; ?>
                 <?php //echo $this->settings->site_name; ?> <?php //echo $this->settings->site_version; ?>
                 | <a href="http://minnkoaung.github.io/myporfilio/" target="_blank">Github.com</a>
-            </p>
+            </small>
                     </div>
                 </div>
             </div>

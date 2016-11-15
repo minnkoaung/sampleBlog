@@ -29,9 +29,9 @@ class Portfilios_model extends CI_Model {
      */
     public function create($data, $settings=array())
     {
-        $this->db->insert($this->_db,$data);
+       ;
         // post data and settings required
-        if ($this->db->insert)
+        if ( $this->db->insert($this->_db,$data))
         {
             return TRUE;
         }

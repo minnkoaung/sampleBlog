@@ -67,32 +67,22 @@
                             <li class="<?php echo (uri_string() == 'admin/portfilios/add') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/portfilios/add'); ?>"><?php echo lang('admin button portfilio_add'); ?></a></li>
                         </ul>
                     </li>
+
+                    <li class="dropdown<?php echo (strstr(uri_string(), 'admin/blogs')) ? ' active' : ''; ?>">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?php echo lang('admin button blog'); ?> <span class="caret"></span></a>
+                       <ul class="dropdown-menu" role="menu">
+                           <li class="<?php echo (uri_string() == 'admin/blogs') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/blogs'); ?>"><?php echo lang('admin button blog_list'); ?></a></li>
+                           <li class="<?php echo (uri_string() == 'admin/blogs/add') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/blogs/add'); ?>"><?php echo lang('admin button blog_add'); ?></a></li>
+                       </ul>
+                   </li>
+
                     <li class="<?php echo (uri_string() == 'admin/contact') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/contact'); ?>"><?php echo lang('admin button messages'); ?></a></li>
                     <li class="<?php echo (uri_string() == 'admin/settings') ? 'active' : ''; ?>"><a href="<?php echo base_url('/admin/settings'); ?>"><?php echo lang('admin button settings'); ?></a></li>
                 </ul>
                 <?php // Nav bar right ?>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="<?php echo base_url('logout'); ?>"><?php echo lang('core button logout'); ?></a></li>
-                    <li>
-                        <span class="dropdown">
-                            <button id="session-language" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-default">
-                                <i class="fa fa-language"></i>
-                                <span class="caret"></span>
-                            </button>
-                            <ul id="session-language-dropdown" class="dropdown-menu" role="menu" aria-labelledby="session-language">
-                                <?php foreach ($this->languages as $key=>$name) : ?>
-                                    <li>
-                                        <a href="#" rel="<?php echo $key; ?>">
-                                            <?php if ($key == $this->session->language) : ?>
-                                                <i class="fa fa-check selected-session-language"></i>
-                                            <?php endif; ?>
-                                            <?php echo $name; ?>
-                                        </a>
-                                    </li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </span>
-                    </li>
+                    
                 </ul>
             </div>
         </div>

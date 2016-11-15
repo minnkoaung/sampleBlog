@@ -66,6 +66,8 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/freelancer.min.js"></script>
+
 
     <?php // Javascript files ?>
     <?php if (isset($js_files) && is_array($js_files)) : ?>
@@ -82,6 +84,7 @@
             <?php endif; ?>
         <?php endforeach; ?>
     <?php endif; ?>
+
 
     
 

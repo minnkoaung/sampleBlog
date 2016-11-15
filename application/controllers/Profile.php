@@ -39,6 +39,7 @@ class Profile extends Private_Controller {
 
         if ($this->form_validation->run() == TRUE)
         {
+            //die('OK');
             // save the changes
             $saved = $this->users_model->edit_profile($this->input->post(), $this->user['id']);
 

@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/vendor/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/css/freelancer.css">
     <link rel="stylesheet" href="themes/<?php echo $this->settings->theme; ?>/vendor/font-awesome/css/font-awesome.min.css">
-
     <!-- Custom CSS -->
    <!--  <link href="../css/portfolio-item.css" rel="stylesheet"> -->
 
@@ -23,7 +22,5 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
-
 <body id="page-top" class="index">

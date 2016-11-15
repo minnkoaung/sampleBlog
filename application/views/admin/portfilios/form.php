@@ -42,7 +42,7 @@
         <div class="form-group col-sm-6<?php echo form_error('image') ? ' has-error' : ''; ?>">
             <?php echo form_label(lang('portfilios input image'), 'image', array('class'=>'control-label')); ?>
             <span class="required">*</span>
-            <?php echo form_input(array('name'=>'image', 'value'=>set_value('image', (isset($portfilio['image']) ? $portfilio['image'] : '')), 'class'=>'form-control')); ?>
+            <?php echo form_upload(array('name'=>'image', 'value'=>set_value('image', (isset($portfilio['image']) ? $portfilio['image'] : '')), 'class'=>'form-control')); ?>
         </div>
 
     </div>

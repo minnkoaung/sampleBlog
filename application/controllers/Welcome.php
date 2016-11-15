@@ -12,6 +12,8 @@ class Welcome extends Public_Controller {
         // load the language file
         $this->lang->load('welcome');
         $this->load->model('Personals_model');
+        $this->load->model('Portfilios_model');
+        $this->load->model('Contact_model');
     }
 
 
@@ -26,12 +28,14 @@ class Welcome extends Public_Controller {
         $data = $this->includes;
         // get list
         $personals = $this->Personals_model->get_all(1);
+        $portfilios = $this->Portfilios_model->get_all(10);
         //$featured_properties = $this->Personals_model->get_feature(4);
         //var_dump($properties);
         // set content data
         $content_data = array(
             'welcome_message' => $this->settings->welcome_message[$this->session->language],
             'personals' =>  $personals,
+            'portfilios' =>  $portfilios,
             //'featured_properties' => $featured_properties,
         );
         // $content_data['types'] = array("1"=>"Condo","2"=>"Apartment","3"=>"Hostel");

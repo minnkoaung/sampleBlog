@@ -171,10 +171,23 @@ class Portfilios extends Admin_Controller {
             $portfilios_data = array(
                 "name"=>$this->input->post("name"),
                 "description"=>$this->input->post("description"),
-                "link"=>$this->input->post("link"),
-                "image" => $this->input->post("image"),
+                "link"=>$this->input->post("link")
 
                 );
+
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( $this->upload->do_upload('image'))
+                {
+                    $upload  = $this->upload->data();
+                    $portfilios_data['image'] = $upload['file_name'];
+                }
 
             $saved = $this->portfilios_model->create($portfilios_data);
 
@@ -182,7 +195,7 @@ class Portfilios extends Admin_Controller {
             {
                 $this->session->set_flashdata('message', sprintf(lang('portfilios msg add_portfilio_success'), $this->input->post('name') . " " . $this->input->post('title')));
             }
-            else
+        else
             {
                 $this->session->set_flashdata('error', sprintf(lang('portfilios error add_portfilio_failed'), $this->input->post('name') . " " . $this->input->post('title')));
             }
@@ -230,11 +243,11 @@ class Portfilios extends Admin_Controller {
 
         // get the data
         $portfilio = $this->portfilios_model->get($id);
-        //var_dump($personal);
+      //  var_dump($id);
         //exit();
         $portfilio=(array)$portfilio;
         // print_r($personal);
-        //var_dump($personal);exit();
+        //var_dump($portfilio);exit();
         // if empty results, return to list
         if ( ! $portfilio)
         {
@@ -243,12 +256,16 @@ class Portfilios extends Admin_Controller {
 
         // validators
         $this->form_validation->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'));
-        $this->form_validation->set_rules('name', lang('portfilios input name'));
-        $this->form_validation->set_rules('description', lang('portfilios input title'));
 
-        if (TRUE)
+        $this->form_validation->set_rules('name', lang('portfilios input name'),'required');
+
+        $this->form_validation->set_rules('description', lang('portfilios input title'), 'required');
+
+       if ($this->form_validation->run() == TRUE)
+        //if (TRUE)
         {
-            //die('ok');
+           // die('ok');
+
             // save the changes
             //$is_featured = ($this->input->post("is_featured") != null) ? true:false;
             $portfilio_data = array(
@@ -259,6 +276,23 @@ class Portfilios extends Admin_Controller {
                 // "created_at"=>$this->input->post(""),
                 // "updated_at"=>$this->post(now()),
                 );
+
+
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( $this->upload->do_upload('image'))
+                {
+                    $upload  = $this->upload->data();
+                    //var_dump($upload);
+                    //exit();
+                    $portfilio_data['image'] = $upload['file_name'];
+                }
 
             //var_dump(personal_data);exit();
             $saved = $this->portfilios_model->update($portfilio_data,$id);
@@ -286,7 +320,7 @@ class Portfilios extends Admin_Controller {
         $content_data = array(
             'cancel_url'        => $this->_redirect_url,
             'portfilio'           => $portfilio,
-            'id'           => $id,
+            'portfilio_id'        => $id,
             'password_required' => FALSE
         );
 
@@ -295,7 +329,7 @@ class Portfilios extends Admin_Controller {
        // var_dump( $content_data);exit();
 
         // load views
-        $data['content'] = $this->load->view('admin/portfilios/form', $content_data, TRUE);
+        $data['content'] = $this->load->view('admin/portfilios/form', $content_data,  TRUE);
         $this->load->view($this->template, $data);
     }
 

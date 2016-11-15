@@ -9,11 +9,11 @@
                 <?php foreach($personals['results'] as $personal): ?>
                 <div class="col-lg-12" style="margin-top: -70px;">
                     <!-- <img class="img-responsive" src="img/profile.png" alt=""> -->
-                    <img class="img-responsive" src="themes/<?php echo $this->settings->theme; ?>/img/profile.png" alt="">
-                    
+                    <img class="img-responsive" src="uploads/<?php echo $personal['image']; ?>" alt="">
+
                     <div class="intro-text">
                         <!-- <span class="name">Minn Ko Aung</span> -->
-                        <span class="name"><?php echo $personal['name']; ?></span>
+                        <span class="name">I'm <?php echo $personal['name']; ?></span>
                         <hr class="star-light">
                         <span class="skills"><?php echo $personal['title']; ?></span>
                     </div>
@@ -33,26 +33,29 @@
                 </div>
             </div>
             <div class="row">
+                <?php foreach($portfilios['results'] as $portfilio): ?>
                 <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <a href="<?php echo $portfilio['link']; ?>" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
+                                <h3 style="margin-top: -10px;"><?php echo $portfilio['name']; ?></h3>
+                                <i class="fa fa-search-plus fa-3x" style="margin-top: 10px;"></i>
                             </div>
                         </div>
                         <!-- <img src="img/portfolio/cabin.png" class="img-responsive" alt=""> -->
-                        <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/cabin.png" class="img-responsive" alt="">
+                        <img src="uploads/<?php echo $portfilio['image'];?>" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+            <?php endforeach; ?>
+                <!-- <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <!-- <img src="img/portfolio/cake.png" class="img-responsive" alt=""> -->
-                        <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/cake.png" class="img-responsive" alt="">
+
+                        <img src="themes/<?php //echo $this->settings->theme; ?>/img/portfolio/cake.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -62,8 +65,8 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                       <!--  <img src="img/portfolio/circus.png" class="img-responsive" alt=""> -->
-                       <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/circus.png" class="img-responsive" alt="">
+
+                       <img src="themes/<?php //echo $this->settings->theme; ?>/img/portfolio/circus.png" class="img-responsive" alt="">
 
                     </a>
                 </div>
@@ -74,8 +77,8 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                       <!--  <img src="img/portfolio/game.png" class="img-responsive" alt=""> -->
-                        <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/game.png" class="img-responsive" alt="">
+
+                        <img src="themes/<?php //echo $this->settings->theme; ?>/img/portfolio/game.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -85,8 +88,8 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <!-- <img src="img/portfolio/safe.png" class="img-responsive" alt=""> -->
-                         <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/safe.png" class="img-responsive" alt="">
+
+                         <img src="themes/<?php // echo $this->settings->theme; ?>/img/portfolio/safe.png" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -96,10 +99,9 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <!-- <img src="img/portfolio/submarine.png" class="img-responsive" alt=""> -->
-                        <img src="themes/<?php echo $this->settings->theme; ?>/img/portfolio/submarine.png" class="img-responsive" alt="">
+                        <img src="themes/<?php //echo $this->settings->theme; ?>/img/portfolio/submarine.png" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </section>
@@ -120,7 +122,7 @@
                     <p><?php echo $personal['description']; ?></p>
                 </div>
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
+                    <a href="https://www.linkedin.com/in/minnkoaung" class="btn btn-lg btn-outline">
                         <i class="fa fa-linkedin"></i> | My LinkedIn Profile
                         </a>
                 </div>
@@ -132,6 +134,7 @@
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
+
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Contact Me</h2>
@@ -142,7 +145,64 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <?php echo form_open('', array('role'=>'form')); ?>
+
+    <div class="row">
+        <?php  // name ?>
+        <div class="form-group col-xs-12 floating-label-form-group controls<?php echo form_error('name') ? ' has-error' : ''; ?>">
+            <?php echo form_label(lang('contact input name'), 'name', array('class'=>'control-label')); ?>
+            <span class="required">*</span>
+            <?php echo form_input(array('name'=>'name', 'value'=>set_value('name'), 'class'=>'form-control','placeholder'=>'Your Name')); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <?php  // email ?>
+        <div class="form-group col-xs-12 floating-label-form-group controls<?php echo form_error('email') ? ' has-error' : ''; ?>">
+            <?php echo form_label(lang('contact input email'), 'email', array('class'=>'control-label')); ?>
+            <span class="required">*</span>
+            <?php echo form_input(array('name'=>'email', 'value'=>set_value('email'), 'class'=>'form-control', 'placeholder'=>'Your Email')); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <?php  // message title ?>
+        <div class="form-group col-xs-12 floating-label-form-group controls<?php echo form_error('title') ? ' has-error' : ''; ?>">
+            <?php echo form_label(lang('contact input title'), 'title', array('class'=>'control-label')); ?>
+            <span class="required">*</span>
+            <?php echo form_input(array('name'=>'title', 'value'=>set_value('title'), 'class'=>'form-control', 'placeholder'=>'Message Title')); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <?php  // messsage body ?>
+        <div class="form-group col-xs-12 floating-label-form-group controls<?php echo form_error('message') ? ' has-error' : ''; ?>">
+            <?php echo form_label(lang('contact input message'), 'message', array('class'=>'control-label')); ?>
+            <span class="required">*</span>
+            <?php echo form_textarea(array('name'=>'message', 'value'=>set_value('message'), 'class'=>'form-control','placeholder'=>'Enter Your Message Here!')); ?>
+        </div>
+    </div>
+
+    <!-- <div class="row">
+        <?php  // captcha ?>
+        <div class="form-group col-sm-6<?php //echo form_error('captcha') ? ' has-error' : ''; ?>">
+            <?php //echo form_label(lang('contact input captcha'), 'captcha', array('class'=>'control-label')); ?>
+            <br />
+            <?php //echo $captcha_image; ?>
+            <?php //echo form_input(array('name'=>'captcha', 'id'=>'captcha', 'value'=>"", 'class'=>'form-control')); ?>
+        </div>
+    </div> -->
+
+    <?php // buttons ?>
+    <div class="row">
+        <div class="form-group col-sm-6">
+
+            <button type="submit" name="submit" class="btn btn-success btn-lg" style="margin-top: 10px;"><span class="glyphicon glyphicon-envelope"></span> Send</button>
+        </div>
+    </div>
+
+<?php echo form_close(); ?>
+                    <!-- <form name="sentMessage" id="contactForm" >
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label>Name</label>
@@ -178,7 +238,7 @@
                                 <button type="submit" class="btn btn-success btn-lg"><i class="fa fa-send"></i> Send</button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
                 </div>
             </div>
         </div>

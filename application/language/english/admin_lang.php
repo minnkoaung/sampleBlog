@@ -22,6 +22,9 @@ $lang['admin button person_add']           = "Add New Person";
 $lang['admin button portfilio']          = "Portfolio";
 $lang['admin button portfilio_list']          = "List Portfolio";
 $lang['admin button portfilio_add']           = "Add New Portfolio";
+$lang['admin button blog']          = "Blog";
+$lang['admin button blog_list']          = "List Article";
+$lang['admin button blog_add']           = "Add New Article";
 
 // Tooltips
 $lang['admin tooltip csv_export']         = "Export a CSV file of all results with filters applied.";

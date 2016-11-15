@@ -184,6 +184,7 @@ class User extends Public_Controller {
 
         // load views
         $data['content'] = $this->load->view('user/profile_form', $content_data, TRUE);
+        //var_dump('/'.$this->template);
         $this->load->view($this->template, $data);
     }
 

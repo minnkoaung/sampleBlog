@@ -16,13 +16,20 @@ $(document).ready(function() {
     });
 
     /**
-     * Delete a Personal
+     * Delete a portfiliios
      */
     $('.btn-delete-portfilio').click(function() {
         window.location.href = "http://localhost/minnkoaung/public/admin/portfilios/delete/" + $(this).attr('data-id');
     });
 
-    
+    /**
+     * Delete a blog
+     */
+    $('.btn-delete-blog').click(function() {
+        window.location.href = "http://localhost/minnkoaung/public/admin/blogs/delete/" + $(this).attr('data-id');
+    });
+
+
 
 
 });

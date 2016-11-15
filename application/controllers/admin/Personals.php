@@ -170,12 +170,30 @@ class Personals extends Admin_Controller {
             $personals_data = array(
                 "name"=>$this->input->post("name"),
                 "title"=>$this->input->post("title"),
-                "description"=>$this->input->post("description"),
-                "image" => $this->input->post("image"),
-
+                "description"=>$this->input->post("description")
+               
                 );
 
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( $this->upload->do_upload('image'))
+                {
+                    //die('uploaded');
+                    $upload  = $this->upload->data();
+                    //var_dump($upload);exit();
+                    $personals_data['image'] = $upload['file_name'];
+
+                }
+
             $saved = $this->personals_model->create($personals_data);
+
+           
 
             if ($saved)
             {
@@ -242,10 +260,10 @@ class Personals extends Admin_Controller {
 
         // validators
         $this->form_validation->set_error_delimiters($this->config->item('error_delimeter_left'), $this->config->item('error_delimeter_right'));
-        $this->form_validation->set_rules('name', lang('personals input name'));
-        $this->form_validation->set_rules('title', lang('personals input title'));
-
-        if (TRUE)
+        $this->form_validation->set_rules('name', lang('personals input name'),'required');
+        $this->form_validation->set_rules('title', lang('personals input title'),'required');
+        if ($this->form_validation->run() == TRUE)
+        //if (TRUE)
         {
             //die('ok');
             // save the changes
@@ -254,10 +272,24 @@ class Personals extends Admin_Controller {
                 "name"=>$this->input->post("name"),
                 "title"=>$this->input->post("title"),
                 "description"=>$this->input->post("description"),
-                "image"=>$this->input->post("image"),
+                
                 // "created_at"=>$this->input->post(""),
                 // "updated_at"=>$this->post(now()),
                 );
+
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_size']             = 1000;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload', $config);
+
+                if ( $this->upload->do_upload('image'))
+                {
+                    $upload  = $this->upload->data();
+                    $personal_data['image'] = $upload['file_name'];
+                }
 
             //var_dump(personal_data);exit();
             $saved = $this->personals_model->update($personal_data,$id);
